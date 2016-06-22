@@ -22,4 +22,10 @@ public class Dialogs {
 		return s;
 	}
 
+	public static String showInputBox(String message, String title, JFrame frame) {
+		String s = (String) JOptionPane.showInputDialog(frame, message, title, JOptionPane.PLAIN_MESSAGE, null, null,
+				"");
+		return s;
+	}
+
 }

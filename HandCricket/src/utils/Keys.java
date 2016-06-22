@@ -2,7 +2,7 @@ package utils;
 
 public class Keys {
 
-	public static final String NEW_GAME = "NEW_GAME";
+	public static final String NEW_GAME = "Send Game Request";
 	public static final String USER = "USER";
 	public static final String REJECTED = "REJECTED";
 	public static final String NO_BALL = "NO_BALL";
@@ -23,5 +23,15 @@ public class Keys {
 	public static final String OPPO_BOWL = "OPPO_BOWL";
 	public static final String OPPO_BAT = "OPPO_BAT";
 	public static final String OPPO_WON_TOSS = "OPPO_WON_TOSS";
+	public static final String OPPO_BOWLING = "OPPO_BOWLING";
+	public static final String BALL = "BALL";
+	public static final String ALL_OUT = "ALL_OUT";
+	public static final String OVER_COMPLETE = "OVER_COMPLETE";
+	public static final String OPPO_NAME = "OPPO_NAME";
+	public static final String END_GAME = "End Game";
+	public static final String OPPO_RUN = "OPPO_RUN";
+	public static final String OPPO_HIT = "OPPO_HIT";
+	public static final String OPPO_SCORE = "OPPO_SCORE";
+	public static final String ALL_OPPO_OUT = "ALL_OPPO_OUT";
 
 }

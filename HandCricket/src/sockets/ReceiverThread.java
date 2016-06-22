@@ -14,7 +14,7 @@ public class ReceiverThread extends Thread {
 
 	public static DatagramSocket ds;
 	public static byte buffer[] = new byte[1024];
-	public static int clientport = 789, serverport = 790;
+	public static int clientport = 789;
 	private Gson gson = new Gson();
 	DataReceivedListener dataReceivedListener;
 
@@ -49,7 +49,7 @@ public class ReceiverThread extends Thread {
 			dataReceivedListener.newGame(dataExchange);
 			break;
 		case Keys.REQ_ACCEPTED:
-			dataReceivedListener.requestAccepted();
+			dataReceivedListener.requestAccepted(dataExchange);
 			break;
 		case Keys.AUTO_REJECT:
 			dataReceivedListener.autoReject();
@@ -65,6 +65,15 @@ public class ReceiverThread extends Thread {
 			break;
 		case Keys.OPPO_WON_TOSS:
 			dataReceivedListener.opponentWonToss();
+			break;
+		case Keys.OPPO_BOWLING:
+			dataReceivedListener.bowl(dataExchange);
+			break;
+		case Keys.OPPO_HIT:
+			dataReceivedListener.opponentHit(dataExchange);
+			break;
+		case Keys.NO_BALL:
+			dataReceivedListener.noball();
 			break;
 		default:
 			break;

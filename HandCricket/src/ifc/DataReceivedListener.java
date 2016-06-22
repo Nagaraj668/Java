@@ -17,7 +17,7 @@ public interface DataReceivedListener {
 	void matchLose(DataExchange dataExchange);
 	void matchDraw(DataExchange dataExchange);
 	void resetMatch();
-	void requestAccepted();
+	void requestAccepted(DataExchange dataExchange);
 	void declareOpponentWin();
 	void tossFinished(DataExchange dataExchange);
 	void opponentWonToss();

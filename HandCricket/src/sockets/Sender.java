@@ -16,17 +16,29 @@ public class Sender {
 	public static int clientport = 789, serverport = 790;
 	private Gson gson = new Gson();
 	InetAddress is;
+	String ipAddress;
 
-	public Sender() {
+	private static Sender sender;
+
+	public static Sender getInstance(String ipAddress) {
+		if (sender == null) {
+			sender = new Sender(ipAddress);
+		}
+		return sender;
+	}
+
+	private Sender(String ipAddress) {
 		try {
 			ds = new DatagramSocket(serverport);
 		} catch (SocketException e) {
 			e.printStackTrace();
 		}
 		try {
-			is = InetAddress.getByName("localhost");
+			this.ipAddress = new String(ipAddress);
+			is = InetAddress.getByName(this.ipAddress);
 		} catch (UnknownHostException e1) {
 			e1.printStackTrace();
+			System.out.println(e1);
 		}
 	}
 

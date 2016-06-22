@@ -1,24 +1,24 @@
 package model;
 
 public class NewGame {
-	private float overs;
+	private double overs;
 	private int wickets;
 
 	public NewGame() {
 		super();
 	}
 
-	public NewGame(float overs, int wickets) {
+	public NewGame(double overs, int wickets) {
 		super();
 		this.overs = overs;
 		this.wickets = wickets;
 	}
 
-	public float getOvers() {
+	public double getOvers() {
 		return overs;
 	}
 
-	public void setOvers(float overs) {
+	public void setOvers(double overs) {
 		this.overs = overs;
 	}
 

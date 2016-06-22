@@ -1,22 +1,25 @@
 package model;
 
+import java.math.BigDecimal;
+
 public class GameScore {
 
 	private int runs;
 	private int wickets;
-	private float overs;
-	private float runRate;
+	private double overs;
+	private double runRate;
 	private int ballsRemaining;
 	private int totalWickets;
-	private float totalOvers;
+	private double totalOvers;
 	private int runsToWin;
+	private int innings;
 
 	public GameScore() {
 		super();
 	}
 
-	public GameScore(int runs, int wickets, float overs, float runRate, int ballsRemaining, int runsToWin,
-			int totalWickets, float totalOvers) {
+	public GameScore(int runs, int wickets, double overs, double runRate, int ballsRemaining, int runsToWin,
+			int totalWickets, double totalOvers, int innings) {
 		super();
 		this.runs = runs;
 		this.wickets = wickets;
@@ -26,6 +29,20 @@ public class GameScore {
 		this.runsToWin = runsToWin;
 		this.totalWickets = totalWickets;
 		this.totalOvers = totalOvers;
+		this.innings = innings;
+	}
+
+	public int getInnings() {
+		return innings;
+	}
+
+	public boolean setInnings() {
+		this.innings = this.innings + 1;
+		if (innings > 2) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public int getTotalWickets() {
@@ -36,11 +53,11 @@ public class GameScore {
 		this.totalWickets = totalWickets;
 	}
 
-	public float getTotalOvers() {
+	public double getTotalOvers() {
 		return totalOvers;
 	}
 
-	public void setTotalOvers(float totalOvers) {
+	public void setTotalOvers(double totalOvers) {
 		this.totalOvers = totalOvers;
 	}
 
@@ -56,23 +73,28 @@ public class GameScore {
 		return wickets;
 	}
 
-	public void setWickets(int wickets) {
+	public boolean setWickets(int wickets) {
 		this.wickets = wickets;
+		if (wickets == totalWickets) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
-	public float getOvers() {
+	public double getOvers() {
 		return overs;
 	}
 
-	public void setOvers(float overs) {
+	public void setOvers(double overs) {
 		this.overs = overs;
 	}
 
-	public float getRunRate() {
+	public double getRunRate() {
 		return runRate;
 	}
 
-	public void setRunRate(float runRate) {
+	public void setRunRate(double runRate) {
 		this.runRate = runRate;
 	}
 
@@ -110,5 +132,17 @@ public class GameScore {
 
 	public void hitWicket() {
 		wickets++;
+	}
+
+	public boolean updateOver() {
+		boolean flag = false;
+		overs = overs + 0.1;
+		double balls = BigDecimal.valueOf(overs).divideAndRemainder(BigDecimal.ONE)[1].floatValue();
+		if (balls == 0.6) {
+			overs = overs - 0.6 + 1.0;
+			if (overs == totalOvers)
+				flag = true;
+		}
+		return flag;
 	}
 }
